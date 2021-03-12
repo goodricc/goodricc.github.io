@@ -1,75 +1,60 @@
+/* 鼠标图标 */
 
- # 鼠标样式
 body {
-    cursor: url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/default.cur),
-        default;
-}
-a,
-img {
-    cursor: url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/pointer.cur),
-        default;
+    cursor: url(https://cdn.jsdelivr.net/gh/lete114/CDN@1.0/Use/Jkll8I.png), auto;
 }
 
-/* 页脚footer */
-/* 渐变色滚动动画 */
-@-webkit-keyframes Gradient {
-    0% {
-        background-position: 0 50%;
-    }
 
-    50% {
-        background-position: 100% 50%;
-    }
+/*a标签*/
 
-    100% {
-        background-position: 0 50%;
-    }
+a:hover {
+    cursor: url(https://cdn.jsdelivr.net/gh/lete114/CDN@1.0/Use/JkuClT.png), auto;
 }
 
-@-moz-keyframes Gradient {
-    0% {
-        background-position: 0 50%;
-    }
 
-    50% {
-        background-position: 100% 50%;
-    }
+/*按钮*/
 
-    100% {
-        background-position: 0 50%;
-    }
+button:hover {
+    cursor: url(https://cdn.jsdelivr.net/gh/lete114/CDN@1.0/Use/JkuClT.png), auto;
 }
 
-@keyframes Gradient {
-    0% {
-        background-position: 0 50%;
-    }
 
-    50% {
-        background-position: 100% 50%;
-    }
+/*i标签*/
 
-    100% {
-        background-position: 0 50%;
-    }
+i:hover {
+    cursor: url(https://cdn.jsdelivr.net/gh/lete114/CDN@1.0/Use/JkuClT.png), auto;
 }
-#footer {
-    background: linear-gradient(-45deg, #ee7752, #ce3e75, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-    -webkit-animation: Gradient 10s ease infinite;
-    -moz-animation: Gradient 10s ease infinite;
-    animation: Gradient 10s ease infinite;
-    -o-user-select: none;
-    -ms-user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+
+
+/*up酱*/
+
+#upj:hover {
+    cursor: url(https://cdn.jsdelivr.net/gh/lete114/CDN@1.0/Use/JkuClT.png), auto;
 }
-#footer:before {
-    background-color: rgba(0, 0, 0, 0);
+
+
+/*页脚a标签*/
+
+#footer-wrap a:hover {
+    text-decoration: none;
+    cursor: url(https://cdn.jsdelivr.net/gh/lete114/CDN@1.0/Use/JkuClT.png), auto;
 }
+
+
+/*分页器*/
+
+#pagination .page-number:hover {
+    cursor: url(https://cdn.jsdelivr.net/gh/lete114/CDN@1.0/Use/JkuClT.png), auto;
+}
+
+
+/*头部的导航栏*/
+
+#nav .site-page:hover {
+    cursor: url(https://cdn.jsdelivr.net/gh/lete114/CDN@1.0/Use/JkuClT.png), auto;
+}
+
+
 
 /* 滚动条 */
 ::-webkit-scrollbar {
@@ -109,143 +94,28 @@ img {
 /* 文章页背景 */
 .layout_post>#post {
     /* 以下代表透明度为00 可以自行修改*/
-    background: rgba(255,255,255,0);
+    background: rgba(255,255,255, .8);
 }
 
 /* 所有页面背景 */
 #aside_content .card-widget, #recent-posts>.recent-post-item, .layout_page>div:first-child:not(.recent-posts), .layout_post>#page, .layout_post>#post, .read-mode .layout_post>#post{
     /* 以下代表透明度为00 */
-    background: rgba(255,255,255,0);
+    background: rgba(255,255,255, .8);
 }
 
 
 
-  /*鼠标移动特效*/
-(function fairyDustCursor() {
+/*移动端优化：去除归档、标签、最新文章、公告、、只保留网站统计*/
 
-  var possibleColors = ["#D61C59", "#E7D84B", "#1B8798"]
-  var width = window.innerWidth;
-  var height = window.innerHeight;
-  var cursor = {x: width/2, y: width/2};
-  var particles = [];
-
-  function init() {
-    bindEvents();
-    loop();
-  }
-
-  // Bind events that are needed
-  function bindEvents() {
-    document.addEventListener('mousemove', onMouseMove);
-    document.addEventListener('touchmove', onTouchMove);
-    document.addEventListener('touchstart', onTouchMove);
-
-    window.addEventListener('resize', onWindowResize);
-  }
-
-  function onWindowResize(e) {
-    width = window.innerWidth;
-    height = window.innerHeight;
-  }
-
-  function onTouchMove(e) {
-    if( e.touches.length > 0 ) {
-      for( var i = 0; i < e.touches.length; i++ ) {
-        addParticle( e.touches[i].clientX, e.touches[i].clientY, possibleColors[Math.floor(Math.random()*possibleColors.length)]);
-      }
+@media screen and (max-width: 800px) {
+    #aside_content div:not(:last-child) {
+        display: none;
+        font-size: 13px;
     }
-  }
-
-  function onMouseMove(e) {
-    cursor.x = e.clientX;
-    cursor.y = e.clientY;
-
-    addParticle( cursor.x, cursor.y, possibleColors[Math.floor(Math.random()*possibleColors.length)]);
-  }
-
-  function addParticle(x, y, color) {
-    var particle = new Particle();
-    particle.init(x, y, color);
-    particles.push(particle);
-  }
-
-  function updateParticles() {
-
-    for( var i = 0; i < particles.length; i++ ) {
-      particles[i].update();
-    }
-
-    for( var i = particles.length -1; i >= 0; i-- ) {
-      if( particles[i].lifeSpan < 0 ) {
-        particles[i].die();
-        particles.splice(i, 1);
-      }
-    }
-
-  }
-
-  function loop() {
-    requestAnimationFrame(loop);
-    updateParticles();
-  }
-
-  function Particle() {
-
-    this.character = "*";
-    this.lifeSpan = 120; //ms
-    this.initialStyles ={
-      "position": "fixed",
-      "top": "0", //必须加
-      "display": "block",
-      "pointerEvents": "none",
-      "z-index": "10000000",
-      "fontSize": "20px",
-      "will-change": "transform"
-    };
-
-    this.init = function(x, y, color) {
-
-      this.velocity = {
-        x:  (Math.random() < 0.5 ? -1 : 1) * (Math.random() / 2),
-        y: 1
-      };
-
-      this.position = {x: x - 10, y: y - 20};
-      this.initialStyles.color = color;
-      console.log(color);
-
-      this.element = document.createElement('span');
-      this.element.innerHTML = this.character;
-      applyProperties(this.element, this.initialStyles);
-      this.update();
-
-      document.body.appendChild(this.element);
-    };
-
-    this.update = function() {
-      this.position.x += this.velocity.x;
-      this.position.y += this.velocity.y;
-      this.lifeSpan--;
-
-      this.element.style.transform = "translate3d(" + this.position.x + "px," + this.position.y + "px,0) scale(" + (this.lifeSpan / 120) + ")";
-    }
-
-    this.die = function() {
-      this.element.parentNode.removeChild(this.element);
-    }
-
-  }
-
-  function applyProperties( target, properties ) {
-    for( var key in properties ) {
-      target.style[ key ] = properties[ key ];
-    }
-  }
-
-  init();
-})();
+}
 
 
+ 
 
 
 
