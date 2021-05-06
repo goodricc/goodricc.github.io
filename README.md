@@ -1,5 +1,4 @@
 # goodricc.github.io
 blogs
 
-# This is my blog site.
-# goodric.top
+# This is my blog site: goodric.top
